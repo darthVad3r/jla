@@ -1,0 +1,34 @@
+{
+  "type": "object",
+  "properties": {
+    "requestId": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "principalId": {
+      "type": "string"
+    },
+    "kind": {
+      "enum": [
+        "Answer",
+        "Approve",
+        "Decline"
+      ]
+    },
+    "answer": true,
+    "actionDigest": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "requestId",
+    "principalId",
+    "kind",
+    "answer",
+    "actionDigest"
+  ],
+  "$comment": "Generated from HumanResponse, contract version 1.0. Do not edit by hand."
+}

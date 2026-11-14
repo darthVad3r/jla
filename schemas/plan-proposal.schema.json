@@ -1,0 +1,311 @@
+{
+  "type": "object",
+  "properties": {
+    "successCriteria": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "check": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "kind": {
+                "enum": [
+                  "Schema",
+                  "FieldPresent",
+                  "MinCount",
+                  "Coverage",
+                  "EvidenceResolves",
+                  "Judged"
+                ]
+              },
+              "description": {
+                "type": "string"
+              },
+              "parameters": true,
+              "required": {
+                "type": "boolean"
+              },
+              "isCompleteness": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "id",
+              "kind",
+              "description",
+              "parameters",
+              "required",
+              "isCompleteness"
+            ]
+          },
+          "requesterCriterionIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "description",
+          "check",
+          "requesterCriterionIds"
+        ]
+      }
+    },
+    "openQuestions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "field": {
+            "type": "string"
+          },
+          "question": {
+            "type": "string"
+          },
+          "options": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "field",
+          "question",
+          "options"
+        ]
+      }
+    },
+    "tasks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "taskKey": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "capabilityId": {
+            "type": "string"
+          },
+          "inputs": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "field": {
+                  "type": "string"
+                },
+                "kind": {
+                  "enum": [
+                    "Literal",
+                    "FromTask",
+                    "AskHuman"
+                  ]
+                },
+                "value": true,
+                "provenance": {
+                  "enum": [
+                    "Requester",
+                    "HumanClarification",
+                    null
+                  ]
+                },
+                "sourceTaskKey": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "sourcePointer": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "allowIncomplete": {
+                  "type": "boolean"
+                },
+                "questionId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "field",
+                "kind",
+                "value",
+                "provenance",
+                "sourceTaskKey",
+                "sourcePointer",
+                "allowIncomplete",
+                "questionId"
+              ]
+            }
+          },
+          "after": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "requestedOperations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "acceptance": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "kind": {
+                  "enum": [
+                    "Schema",
+                    "FieldPresent",
+                    "MinCount",
+                    "Coverage",
+                    "EvidenceResolves",
+                    "Judged"
+                  ]
+                },
+                "description": {
+                  "type": "string"
+                },
+                "parameters": true,
+                "required": {
+                  "type": "boolean"
+                },
+                "isCompleteness": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "id",
+                "kind",
+                "description",
+                "parameters",
+                "required",
+                "isCompleteness"
+              ]
+            }
+          },
+          "producesCriteria": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "preferredAgentId": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "rationale": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "taskKey",
+          "title",
+          "capabilityId",
+          "inputs",
+          "after",
+          "requestedOperations",
+          "acceptance",
+          "producesCriteria",
+          "preferredAgentId",
+          "rationale"
+        ]
+      }
+    },
+    "requesterMappings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "requesterCriterionId": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "Mapped",
+              "NeedsClarification"
+            ]
+          },
+          "successCriterionIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "openQuestionId": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "requesterCriterionId",
+          "status",
+          "successCriterionIds",
+          "openQuestionId"
+        ]
+      }
+    },
+    "missingCapabilities": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "rationale": {
+      "type": "string"
+    },
+    "revisionReason": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "successCriteria",
+    "openQuestions",
+    "tasks",
+    "requesterMappings",
+    "missingCapabilities",
+    "rationale",
+    "revisionReason"
+  ],
+  "$comment": "Generated from PlanProposal, contract version 1.0. Do not edit by hand."
+}

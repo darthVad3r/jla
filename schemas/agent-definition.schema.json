@@ -1,0 +1,126 @@
+{
+  "type": "object",
+  "properties": {
+    "agentId": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "capabilities": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "capabilityId": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "inputSchema": true,
+          "outputSchema": true,
+          "defaultAcceptance": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "kind": {
+                  "enum": [
+                    "Schema",
+                    "FieldPresent",
+                    "MinCount",
+                    "Coverage",
+                    "EvidenceResolves",
+                    "Judged"
+                  ]
+                },
+                "description": {
+                  "type": "string"
+                },
+                "parameters": true,
+                "required": {
+                  "type": "boolean"
+                },
+                "isCompleteness": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "id",
+                "kind",
+                "description",
+                "parameters",
+                "required",
+                "isCompleteness"
+              ]
+            }
+          }
+        },
+        "required": [
+          "capabilityId",
+          "description",
+          "inputSchema",
+          "outputSchema",
+          "defaultAcceptance"
+        ]
+      }
+    },
+    "declaredOperations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "constraints": {
+      "type": "object",
+      "properties": {
+        "maxTaskSeconds": {
+          "type": [
+            "string",
+            "integer"
+          ],
+          "pattern": "^-?(?:0|[1-9]\\d*)$"
+        },
+        "usesLlm": {
+          "type": "boolean"
+        },
+        "estimatedCostUsd": {
+          "type": [
+            "string",
+            "number"
+          ],
+          "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d\u002B)?$"
+        }
+      },
+      "required": [
+        "maxTaskSeconds",
+        "usesLlm",
+        "estimatedCostUsd"
+      ]
+    },
+    "implementationKey": {
+      "type": "string"
+    },
+    "contractVersion": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "agentId",
+    "version",
+    "description",
+    "capabilities",
+    "declaredOperations",
+    "constraints",
+    "implementationKey",
+    "contractVersion"
+  ],
+  "$comment": "Generated from AgentDefinition, contract version 1.0. Do not edit by hand."
+}

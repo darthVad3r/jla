@@ -1,0 +1,98 @@
+{
+  "type": "object",
+  "properties": {
+    "seq": {
+      "type": [
+        "string",
+        "integer"
+      ],
+      "pattern": "^-?(?:0|[1-9]\\d*)$"
+    },
+    "eventId": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "tenantId": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string",
+          "format": "uuid"
+        }
+      }
+    },
+    "runId": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "value": {
+          "type": "string",
+          "format": "uuid"
+        }
+      }
+    },
+    "at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "type": {
+      "enum": [
+        "ObjectiveCreated",
+        "PlanProposed",
+        "PlanValidated",
+        "PlanRejected",
+        "PlanRevised",
+        "AgentSelected",
+        "TaskDispatched",
+        "TaskStateChanged",
+        "TaskResultRecorded",
+        "AcceptanceEvaluated",
+        "ReplanDecision",
+        "GovernanceDecision",
+        "OperationExecuted",
+        "ApprovalRequested",
+        "ApprovalDecided",
+        "ClarificationRequested",
+        "HumanResponseRejected",
+        "CatalogTightened",
+        "LlmCallReserved",
+        "LlmCallSettled",
+        "LimitReached",
+        "RunTerminated"
+      ]
+    },
+    "actor": {
+      "type": "string"
+    },
+    "subject": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "details": true,
+    "catalogVersion": {
+      "type": [
+        "string",
+        "integer",
+        "null"
+      ],
+      "pattern": "^-?(?:0|[1-9]\\d*)$"
+    }
+  },
+  "required": [
+    "seq",
+    "eventId",
+    "tenantId",
+    "runId",
+    "at",
+    "type",
+    "actor",
+    "subject",
+    "details",
+    "catalogVersion"
+  ],
+  "$comment": "Generated from AuditEvent, contract version 1.0. Do not edit by hand."
+}

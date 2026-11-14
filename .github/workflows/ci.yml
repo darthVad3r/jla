@@ -1,0 +1,21 @@
+name: ci
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - run: dotnet restore Jla.sln
+      - run: dotnet build Jla.sln --no-restore -c Release
+      # Unit and architecture tests, including the schema drift test and the dependency rules.
+      - run: dotnet test Jla.sln --no-build -c Release --filter "Category!=Integration"
+      # Testcontainers needs Docker, which ubuntu-latest provides.
+      - run: dotnet test tests/Jla.Tests.Acceptance --no-build -c Release --filter "Category=Integration"

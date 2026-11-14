@@ -1,0 +1,234 @@
+{
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string",
+          "format": "uuid"
+        }
+      }
+    },
+    "tenantId": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string",
+          "format": "uuid"
+        }
+      }
+    },
+    "state": {
+      "enum": [
+        "Active",
+        "AwaitingHuman",
+        "Completed",
+        "Escalated",
+        "Cancelled"
+      ]
+    },
+    "stateVersion": {
+      "type": [
+        "string",
+        "integer"
+      ],
+      "pattern": "^-?(?:0|[1-9]\\d*)$"
+    },
+    "currentPlanVersion": {
+      "type": [
+        "string",
+        "integer"
+      ],
+      "pattern": "^-?(?:0|[1-9]\\d*)$"
+    },
+    "replanCount": {
+      "type": [
+        "string",
+        "integer"
+      ],
+      "pattern": "^-?(?:0|[1-9]\\d*)$"
+    },
+    "catalogVersion": {
+      "type": [
+        "string",
+        "integer"
+      ],
+      "pattern": "^-?(?:0|[1-9]\\d*)$"
+    },
+    "limits": {
+      "type": "object",
+      "properties": {
+        "maxTasksPerPlan": {
+          "type": [
+            "string",
+            "integer"
+          ],
+          "pattern": "^-?(?:0|[1-9]\\d*)$",
+          "default": 15
+        },
+        "maxReplans": {
+          "type": [
+            "string",
+            "integer"
+          ],
+          "pattern": "^-?(?:0|[1-9]\\d*)$",
+          "default": 3
+        },
+        "maxRetriesPerTask": {
+          "type": [
+            "string",
+            "integer"
+          ],
+          "pattern": "^-?(?:0|[1-9]\\d*)$",
+          "default": 2
+        },
+        "maxTaskSeconds": {
+          "type": [
+            "string",
+            "integer"
+          ],
+          "pattern": "^-?(?:0|[1-9]\\d*)$",
+          "default": 120
+        },
+        "maxObjectiveMinutes": {
+          "type": [
+            "string",
+            "integer"
+          ],
+          "pattern": "^-?(?:0|[1-9]\\d*)$",
+          "default": 30
+        },
+        "maxLlmCalls": {
+          "type": [
+            "string",
+            "integer"
+          ],
+          "pattern": "^-?(?:0|[1-9]\\d*)$",
+          "default": 50
+        },
+        "maxCostUsd": {
+          "type": [
+            "string",
+            "number"
+          ],
+          "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d\u002B)?$",
+          "default": 2.00
+        },
+        "reservationMargin": {
+          "type": [
+            "string",
+            "number"
+          ],
+          "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d\u002B)?$",
+          "default": 0.20
+        },
+        "humanWaitMinutes": {
+          "type": [
+            "string",
+            "integer"
+          ],
+          "pattern": "^-?(?:0|[1-9]\\d*)$",
+          "default": 60
+        },
+        "approvalExpiryMinutes": {
+          "type": [
+            "string",
+            "integer"
+          ],
+          "pattern": "^-?(?:0|[1-9]\\d*)$",
+          "default": 15
+        }
+      }
+    },
+    "usage": {
+      "type": "object",
+      "properties": {
+        "spentUsd": {
+          "type": [
+            "string",
+            "number"
+          ],
+          "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d\u002B)?$"
+        },
+        "llmCalls": {
+          "type": [
+            "string",
+            "integer"
+          ],
+          "pattern": "^-?(?:0|[1-9]\\d*)$"
+        },
+        "activeMs": {
+          "type": [
+            "string",
+            "integer"
+          ],
+          "pattern": "^-?(?:0|[1-9]\\d*)$"
+        },
+        "llmBlocked": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "spentUsd",
+        "llmCalls",
+        "activeMs",
+        "llmBlocked"
+      ]
+    },
+    "openHumanRequestId": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "uuid"
+    },
+    "terminal": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "state": {
+          "enum": [
+            "Active",
+            "AwaitingHuman",
+            "Completed",
+            "Escalated",
+            "Cancelled"
+          ]
+        },
+        "reasonCode": {
+          "type": "string"
+        },
+        "summary": {
+          "type": "string"
+        },
+        "at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "state",
+        "reasonCode",
+        "summary",
+        "at"
+      ]
+    }
+  },
+  "required": [
+    "id",
+    "tenantId",
+    "state",
+    "stateVersion",
+    "currentPlanVersion",
+    "replanCount",
+    "catalogVersion",
+    "limits",
+    "usage",
+    "openHumanRequestId",
+    "terminal"
+  ],
+  "$comment": "Generated from Run, contract version 1.0. Do not edit by hand."
+}

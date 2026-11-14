@@ -1,0 +1,155 @@
+{
+  "type": "object",
+  "properties": {
+    "taskId": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "attempt": {
+      "type": [
+        "string",
+        "integer"
+      ],
+      "pattern": "^-?(?:0|[1-9]\\d*)$"
+    },
+    "status": {
+      "enum": [
+        "Succeeded",
+        "Failed",
+        "Partial",
+        "Blocked"
+      ]
+    },
+    "output": true,
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "type": "string"
+          },
+          "itemId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "source",
+          "itemId"
+        ]
+      }
+    },
+    "unresolvedItems": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "issues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "isUncertainty": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "code",
+          "message",
+          "isUncertainty"
+        ]
+      }
+    },
+    "recommendations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "suggestedCapability": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "description",
+          "suggestedCapability"
+        ]
+      }
+    },
+    "retryable": {
+      "type": "boolean"
+    },
+    "usage": {
+      "type": "object",
+      "properties": {
+        "llmCalls": {
+          "type": [
+            "string",
+            "integer"
+          ],
+          "pattern": "^-?(?:0|[1-9]\\d*)$"
+        },
+        "inputTokens": {
+          "type": [
+            "string",
+            "integer"
+          ],
+          "pattern": "^-?(?:0|[1-9]\\d*)$"
+        },
+        "outputTokens": {
+          "type": [
+            "string",
+            "integer"
+          ],
+          "pattern": "^-?(?:0|[1-9]\\d*)$"
+        },
+        "costUsd": {
+          "type": [
+            "string",
+            "number"
+          ],
+          "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d\u002B)?$"
+        },
+        "elapsedMs": {
+          "type": [
+            "string",
+            "integer"
+          ],
+          "pattern": "^-?(?:0|[1-9]\\d*)$"
+        }
+      },
+      "required": [
+        "llmCalls",
+        "inputTokens",
+        "outputTokens",
+        "costUsd",
+        "elapsedMs"
+      ]
+    }
+  },
+  "required": [
+    "taskId",
+    "attempt",
+    "status",
+    "output",
+    "evidence",
+    "unresolvedItems",
+    "issues",
+    "recommendations",
+    "retryable",
+    "usage"
+  ],
+  "$comment": "Generated from TaskResult, contract version 1.0. Do not edit by hand."
+}

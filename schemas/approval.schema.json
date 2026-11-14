@@ -1,0 +1,64 @@
+{
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "humanRequestId": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "runId": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string",
+          "format": "uuid"
+        }
+      }
+    },
+    "actionDigest": {
+      "type": "string"
+    },
+    "approverPrincipalId": {
+      "type": "string"
+    },
+    "approverAuthority": {
+      "type": "string"
+    },
+    "grantedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "expiresAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "idempotencyKey": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "Granted",
+        "Consumed",
+        "Declined",
+        "Expired",
+        "Invalidated"
+      ]
+    }
+  },
+  "required": [
+    "id",
+    "humanRequestId",
+    "runId",
+    "actionDigest",
+    "approverPrincipalId",
+    "approverAuthority",
+    "grantedAt",
+    "expiresAt",
+    "idempotencyKey",
+    "status"
+  ],
+  "$comment": "Generated from Approval, contract version 1.0. Do not edit by hand."
+}

@@ -1,0 +1,120 @@
+{
+  "type": "object",
+  "properties": {
+    "objectiveId": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "requester": {
+      "type": "object",
+      "properties": {
+        "tenantId": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        },
+        "principalId": {
+          "type": "string"
+        },
+        "roles": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "tenantId",
+        "principalId",
+        "roles"
+      ]
+    },
+    "text": {
+      "type": "string"
+    },
+    "constraints": {
+      "type": "object",
+      "properties": {
+        "budgetUsd": {
+          "type": [
+            "string",
+            "number",
+            "null"
+          ],
+          "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d\u002B)?$"
+        },
+        "deadline": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "prohibitedOperations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "budgetUsd",
+        "deadline",
+        "prohibitedOperations"
+      ]
+    },
+    "successCriteria": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "text"
+        ]
+      }
+    },
+    "embeddedContent": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string"
+          },
+          "content": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "label",
+          "content"
+        ]
+      }
+    },
+    "limitsProfile": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "objectiveId",
+    "requester",
+    "text",
+    "constraints",
+    "successCriteria",
+    "embeddedContent",
+    "limitsProfile"
+  ],
+  "$comment": "Generated from Objective, contract version 1.0. Do not edit by hand."
+}

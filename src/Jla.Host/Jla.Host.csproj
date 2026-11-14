@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <ItemGroup>
+    <ProjectReference Include="..\Jla.Contracts\Jla.Contracts.csproj" />
+    <ProjectReference Include="..\Jla.Core\Jla.Core.csproj" />
+    <ProjectReference Include="..\Jla.Persistence\Jla.Persistence.csproj" />
+    <ProjectReference Include="..\Jla.Llm.Claude\Jla.Llm.Claude.csproj" />
+    <ProjectReference Include="..\Jla.Agents\Jla.Agents.csproj" />
+    <ProjectReference Include="..\Jla.Simulation\Jla.Simulation.csproj" />
+  </ItemGroup>
+</Project>

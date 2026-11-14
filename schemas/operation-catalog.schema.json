@@ -1,0 +1,60 @@
+{
+  "type": "object",
+  "properties": {
+    "version": {
+      "type": [
+        "string",
+        "integer"
+      ],
+      "pattern": "^-?(?:0|[1-9]\\d*)$"
+    },
+    "operations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "operationId": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "class": {
+            "enum": [
+              "ReadOnly",
+              "ReversibleOrInternal",
+              "Consequential",
+              "Unclassified"
+            ]
+          },
+          "parameterSchema": true,
+          "materialParameters": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "targetsPointer": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "operationId",
+          "description",
+          "class",
+          "parameterSchema",
+          "materialParameters",
+          "targetsPointer"
+        ]
+      }
+    }
+  },
+  "required": [
+    "version",
+    "operations"
+  ],
+  "$comment": "Generated from OperationCatalog, contract version 1.0. Do not edit by hand."
+}

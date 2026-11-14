@@ -1,0 +1,43 @@
+{
+  "type": "object",
+  "properties": {
+    "requesterCriterionId": {
+      "type": "string"
+    },
+    "verdict": {
+      "enum": [
+        "Met",
+        "NotMet",
+        "CannotEvaluate"
+      ]
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "type": "string"
+          },
+          "itemId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "source",
+          "itemId"
+        ]
+      }
+    },
+    "reason": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "requesterCriterionId",
+    "verdict",
+    "evidence",
+    "reason"
+  ],
+  "$comment": "Generated from CriterionVerdict, contract version 1.0. Do not edit by hand."
+}

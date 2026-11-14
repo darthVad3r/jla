@@ -1,0 +1,67 @@
+{
+  "type": "object",
+  "properties": {
+    "output": true,
+    "rawText": {
+      "type": "string"
+    },
+    "usage": {
+      "type": "object",
+      "properties": {
+        "inputTokens": {
+          "type": [
+            "string",
+            "integer"
+          ],
+          "pattern": "^-?(?:0|[1-9]\\d*)$"
+        },
+        "outputTokens": {
+          "type": [
+            "string",
+            "integer"
+          ],
+          "pattern": "^-?(?:0|[1-9]\\d*)$"
+        },
+        "cachedInputTokens": {
+          "type": [
+            "string",
+            "integer"
+          ],
+          "pattern": "^-?(?:0|[1-9]\\d*)$"
+        }
+      },
+      "required": [
+        "inputTokens",
+        "outputTokens",
+        "cachedInputTokens"
+      ]
+    },
+    "provider": {
+      "type": "string"
+    },
+    "model": {
+      "type": "string"
+    },
+    "providerRequestId": {
+      "type": "string"
+    },
+    "stopReason": {
+      "enum": [
+        "EndTurn",
+        "MaxTokens",
+        "Refusal",
+        "Other"
+      ]
+    }
+  },
+  "required": [
+    "output",
+    "rawText",
+    "usage",
+    "provider",
+    "model",
+    "providerRequestId",
+    "stopReason"
+  ],
+  "$comment": "Generated from LlmResponse, contract version 1.0. Do not edit by hand."
+}

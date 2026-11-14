@@ -1,0 +1,114 @@
+{
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "runId": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string",
+          "format": "uuid"
+        }
+      }
+    },
+    "type": {
+      "enum": [
+        "Clarification",
+        "Approval",
+        "Escalation"
+      ]
+    },
+    "status": {
+      "enum": [
+        "Open",
+        "Answered",
+        "Expired",
+        "Superseded",
+        "Delivered"
+      ]
+    },
+    "runStateVersion": {
+      "type": [
+        "string",
+        "integer"
+      ],
+      "pattern": "^-?(?:0|[1-9]\\d*)$"
+    },
+    "reason": {
+      "type": "string"
+    },
+    "workCompleted": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "outstandingIssues": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "requiredFromHuman": {
+      "type": "string"
+    },
+    "options": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": "string"
+      }
+    },
+    "action": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "operationId": {
+          "type": "string"
+        },
+        "targets": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "materialParameters": true,
+        "actionDigest": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "operationId",
+        "targets",
+        "materialParameters",
+        "actionDigest"
+      ]
+    },
+    "expiresAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "id",
+    "runId",
+    "type",
+    "status",
+    "runStateVersion",
+    "reason",
+    "workCompleted",
+    "outstandingIssues",
+    "requiredFromHuman",
+    "options",
+    "action",
+    "expiresAt"
+  ],
+  "$comment": "Generated from HumanRequest, contract version 1.0. Do not edit by hand."
+}

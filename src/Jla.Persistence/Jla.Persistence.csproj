@@ -1,0 +1,6 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="..\Jla.Contracts\Jla.Contracts.csproj" />
+    <ProjectReference Include="..\Jla.Core\Jla.Core.csproj" />
+  </ItemGroup>
+</Project>

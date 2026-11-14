@@ -1,0 +1,73 @@
+{
+  "type": "object",
+  "properties": {
+    "kind": {
+      "enum": [
+        "Permit",
+        "Deny",
+        "RequireApproval"
+      ]
+    },
+    "reasonCode": {
+      "type": "string"
+    },
+    "effectiveClass": {
+      "enum": [
+        "ReadOnly",
+        "ReversibleOrInternal",
+        "Consequential",
+        "Unclassified"
+      ]
+    },
+    "pinnedCatalogVersion": {
+      "type": [
+        "string",
+        "integer"
+      ],
+      "pattern": "^-?(?:0|[1-9]\\d*)$"
+    },
+    "currentCatalogVersion": {
+      "type": [
+        "string",
+        "integer"
+      ],
+      "pattern": "^-?(?:0|[1-9]\\d*)$"
+    },
+    "action": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "operationId": {
+          "type": "string"
+        },
+        "targets": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "materialParameters": true,
+        "actionDigest": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "operationId",
+        "targets",
+        "materialParameters",
+        "actionDigest"
+      ]
+    }
+  },
+  "required": [
+    "kind",
+    "reasonCode",
+    "effectiveClass",
+    "pinnedCatalogVersion",
+    "currentCatalogVersion",
+    "action"
+  ],
+  "$comment": "Generated from GovernanceDecision, contract version 1.0. Do not edit by hand."
+}
