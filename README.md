@@ -1,4 +1,4 @@
-# JLA
+# JLA (Justice League of Agents)
 
 Prototype of the JLA orchestration platform: a .NET 10 modular monolith with PostgreSQL.
 The authoritative design is the *JLA Minimum Technical Design Proposal* (a Claude Doc, linked by the project owner)
